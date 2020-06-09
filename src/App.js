@@ -16,8 +16,12 @@ function App() {
   const updateItem = (index)=>
   {
     
+    if(winMessage)
+    {
+      toast(winMessage, {type:"success"});
+    }
     
-    if(arrayItems[index]==="empty")
+    else if(arrayItems[index]==="empty")
     {
       
       arrayItems[index] = isCross ? "Cross" : "Circle" ;
@@ -70,7 +74,7 @@ function App() {
 
   const reloadGame = ()=>
   {
-    toast("Please Wait", {type:'warning'});
+    toast("Please Wait, if there is problem in reloading click on the grid and it reload again.", {type:'warning'});
     arrayItems.fill("empty",0,9);
     setIsCross(false);
     setWinMessage("");
@@ -105,7 +109,7 @@ function App() {
             ))
           }
         </div>
-        <button className="btn green" onClick={reloadGame}>Reload the Game</button>
+        <button className="btn purple" onClick={reloadGame}>Reload the Game</button>
       </div>
     </>
   );
